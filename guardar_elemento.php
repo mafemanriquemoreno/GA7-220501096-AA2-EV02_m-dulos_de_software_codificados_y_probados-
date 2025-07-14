@@ -14,7 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $presentacion = htmlspecialchars($_POST['presentacion']);
     $fecha_vencimiento = htmlspecialchars($_POST['fecha_vencimiento']);
     $existencias = filter_var($_POST['existencias_elemento'], FILTER_SANITIZE_NUMBER_INT);
-    
+    $costo_unitario = filter_var($_POST['costo_unitario'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+
     // Para los campos que pueden estar vacíos o no ser enviados (como los <select>)
     $id_categoria = !empty($_POST['id_categoria']) ? filter_var($_POST['id_categoria'], FILTER_SANITIZE_NUMBER_INT) : null;
     $id_proveedor = !empty($_POST['id_proveedor']) ? filter_var($_POST['id_proveedor'], FILTER_SANITIZE_NUMBER_INT) : null;
@@ -26,8 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 4. Preparar la consulta SQL para insertar los datos
         // Usamos marcadores de posición (?) para prevenir inyección SQL
         $sql = "INSERT INTO Elementos_inventario 
-                    (nombre_elemento, marca, lote, presentacion, fecha_vencimiento, existencias_elemento, id_categoria, id_proveedor, id_laboratorio) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    (nombre_elemento, marca, lote, presentacion, fecha_vencimiento, existencias_elemento, id_categoria, id_proveedor, id_laboratorio, costo_unitario) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $pdo->prepare($sql);
 
@@ -45,7 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $existencias,
             $id_categoria,
             $id_proveedor,
-            $id_laboratorio_fijo
+            $id_laboratorio_fijo,
+            $costo_unitario // <-- AÑADIR AL FINAL
         ]);
 
         // 6. Redirigir al usuario de vuelta al formulario con un mensaje de éxito

@@ -116,7 +116,12 @@
                     <label for="existencias_elemento">Cantidad Actual:</label>
                     <input type="number" id="existencias_elemento" name="existencias_elemento" value="1" required>
                 </div>
-                
+
+                <div class="input-group">
+                    <label for="costo_unitario">Costo Unitario (COP):</label>
+                    <input type="number" id="costo_unitario" name="costo_unitario" value="0" step="0.01">
+                </div>
+
                 <div class="full-width buttons">
                     <button type="button" class="btn-cancel" onclick="window.location.href='index.php'">Cancelar</button>
                     <button type="submit" class="btn-submit">Agregar Elemento</button>  

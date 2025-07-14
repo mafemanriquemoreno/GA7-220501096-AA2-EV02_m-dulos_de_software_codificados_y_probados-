@@ -152,6 +152,7 @@ try {
                         <th>Presentación</th>
                         <th>Vencimiento</th>
                         <th>Existencias</th>
+                        <th>Costo Unitario</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -163,6 +164,7 @@ try {
                             <td><?= htmlspecialchars($elemento['presentacion']) ?></td>
                             <td><?= htmlspecialchars($elemento['fecha_vencimiento']) ?></td>
                             <td><?= htmlspecialchars($elemento['existencias_elemento']) ?></td>
+                            <td>$ <?= number_format($elemento['costo_unitario'], 2) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
