@@ -2,9 +2,9 @@
 // Parámetros de conexión a la base de datos PostgreSQL
 $host = 'localhost';
 $port = '5432';
-$dbname = 'laboratorio_inventario'; // El nombre de tu base de datos
+$dbname = 'labventory_BD'; // El nombre de tu base de datos
 $user = 'postgres'; // Tu usuario de PostgreSQL
-$password = 'postgres'; // Tu contraseña de PostgreSQL (ajústala si es diferente)
+$password = '0000'; // Tu contraseña de PostgreSQL (ajústala si es diferente)
 
 // Crear la cadena de conexión (DSN)
 $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password";
